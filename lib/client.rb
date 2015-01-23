@@ -18,7 +18,7 @@ class Client
   end
 
   define_method("save") do
-    @@all_clients.push(self)
+    DB.exec("INSERT INTO clients (client_name) VALUES ('#{@client_name}');")
   end
 
   define_method(:==) do |new_client|
