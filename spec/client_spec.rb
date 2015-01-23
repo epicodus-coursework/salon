@@ -8,4 +8,10 @@ describe(Client) do
       expect(test_client.client_name()).to(eq("Jane"))
     end
   end
+
+  describe(".all") do
+    it("begins with an empty list of clients") do
+      expect(Client.all()).to(eq([]))
+    end
+  end
 end
