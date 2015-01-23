@@ -14,4 +14,8 @@ class Client
   define_method("save") do
     @@all_clients.push(self)
   end
+
+  define_method(:==) do |new_client|
+    self.client_name().==(new_client.client_name())
+  end
 end

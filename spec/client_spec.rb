@@ -11,6 +11,14 @@ RSpec.configure do |config|
 end
 
 describe(Client) do
+  describe("#==") do
+    it("is the same client if they have the same name") do
+      test_client1 = Client.new({:client_name => "Jane"})
+      test_client2 = Client.new({:client_name => "Jane"})
+      expect(test_client1).to(eq(test_client2))
+    end
+  end
+
   describe("#client_name") do
     it("allows you to enter a name for the client") do
       test_client = Client.new({:client_name => "Jane"})
