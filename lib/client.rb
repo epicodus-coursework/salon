@@ -8,7 +8,13 @@ class Client
   end
 
   define_singleton_method(:all) do
-    @@all_clients
+    returned_clients = DB.exec("SELECT * FROM clients;")
+    clients = []
+    returned_clients.each() do |client|
+      client_name = client.fetch("client_name")
+      clients.push(Client.new({:client_name => client_name}))
+    end
+    clients
   end
 
   define_method("save") do
