@@ -24,6 +24,18 @@ describe(Stylist) do
     end
   end
 
+  describe("#client_names") do
+    it("returns an array of clients for a stylist") do
+      test_stylist = Stylist.new({:stylist_name => "Jane", :id => nil})
+      test_stylist.save()
+      test_client1 = Client.new({:client_name => "Ruby", :stylist_id => test_stylist.id()})
+      test_client1.save()
+      test_client2 = Client.new({:client_name => "Pearl", :stylist_id => test_stylist.id()})
+      test_client2.save()
+      expect(test_stylist.client_names()).to(eq([test_client1, test_client2]))
+    end
+  end
+
   describe(".all") do
     it("begins with an empty list of stylists") do
       expect(Stylist.all()).to(eq([]))

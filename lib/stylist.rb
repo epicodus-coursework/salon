@@ -6,6 +6,17 @@ class Stylist
     @id = attributes.fetch(:id)
   end
 
+  define_method(:client_names) do
+    stylists_clients = []
+    client_names = DB.exec("SELECT * FROM clients WHERE stylist_id = #{self.id()};")
+    client_names.each() do |name|
+      client_name = name.fetch("client_name")
+      stylist_id = name.fetch("stylist_id").to_i()
+      stylists_clients.push(Client.new({:client_name => client_name, :stylist_id => stylist_id}))
+    end
+    stylists_clients
+  end
+
   define_singleton_method(:all) do
     returned_stylists = DB.exec("SELECT * FROM stylists;")
     stylists = []
