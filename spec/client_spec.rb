@@ -12,17 +12,24 @@ end
 
 describe(Client) do
   describe("#==") do
-    it("is the same client if they have the same name") do
-      test_client1 = Client.new({:client_name => "Jane"})
-      test_client2 = Client.new({:client_name => "Jane"})
+    it("is the same client if they have the same name and stylist ID") do
+      test_client1 = Client.new({:client_name => "Jane", :stylist_id => 1})
+      test_client2 = Client.new({:client_name => "Jane", :stylist_id => 1})
       expect(test_client1).to(eq(test_client2))
     end
   end
 
   describe("#client_name") do
     it("allows you to enter a name for the client") do
-      test_client = Client.new({:client_name => "Jane"})
+      test_client = Client.new({:client_name => "Jane", :stylist_id => 1})
       expect(test_client.client_name()).to(eq("Jane"))
+    end
+  end
+
+  describe("#stylist_id") do
+    it("reads the stylist ID") do
+      test_client = Client.new({:client_name => "Jane", :stylist_id => 1})
+      expect(test_client.stylist_id()).to(eq(1))
     end
   end
 
@@ -34,7 +41,7 @@ describe(Client) do
 
   describe("#save") do
     it("adds a name to our list of saved clients") do
-      test_client = Client.new({:client_name => "Jane"})
+      test_client = Client.new({:client_name => "Jane", :stylist_id => 1})
       test_client.save()
       expect(Client.all()).to(eq([test_client]))
     end
