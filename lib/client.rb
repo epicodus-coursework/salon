@@ -1,6 +1,4 @@
 class Client
-  @@all_clients = []
-
   attr_reader(:client_name)
 
   define_method(:initialize) do |attributes|
