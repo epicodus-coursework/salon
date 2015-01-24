@@ -9,6 +9,8 @@
   <button type="submit">Add stylist</button>
 </form>
 
+<p>Add a new client:</p>
+
 <form action="/clients" method="post">
   <label for="stylist_id">Select a Stylist</label>
   <select id='stylist_id' name='stylist_id' type='text'>
@@ -24,7 +26,7 @@
 </form>
 
 <% if @stylists.any?() %>
-<p>Click on a stylist to see their clients:</p>
+<p>Click on a stylist to see their clients (or edit/delete their info):</p>
 
 <ul>
   <% @stylists.each do |stylist| %>

@@ -40,7 +40,7 @@ Connect to the database:
 \c salon
 ```
 
-create the following tables:
+Create the following tables:
 
 ``` sql
 CREATE TABLE stylists (id serial PRIMARY KEY, name varchar);
